@@ -8,7 +8,7 @@ class ProductsService {
   static getProducts(siteId,name) {
     return restclient.get(`/sites/${siteId}/search?q=${name}`)
       .then(response => response.data)
-      .catch(err => ([]))
+      .catch(err => ([]));
   };
 }
 
