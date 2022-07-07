@@ -1,8 +1,5 @@
-/**
- * Module dependencies
- */
 const React = require('react');
-const {useEffect,useState} = React;
+const { useEffect, useState } = React;
 const PropTypes = require('prop-types');
 const Head = require('nordic/head');
 const Script = require('nordic/script');
@@ -10,10 +7,11 @@ const Style = require('nordic/style');
 const serialize = require('serialize-javascript');
 const { injectI18n } = require('nordic/i18n');
 const Image = require('nordic/image');
-const restClient = require('nordic/restclient')({timeout:5000,baseURL: '/api'});
-/**
- * View Component
- */
+const restClient = require('nordic/restclient')({
+  timeout:5000,
+  baseURL: '/api'
+});
+
 function View(props) {
   const [products, setProducts ] = useState([])
   const {  translations, imagesPrefix } = props;
@@ -23,10 +21,10 @@ function View(props) {
   };
 
   useEffect(()=>{
-        restClient.get('/getProducts?name=tablet')
-        .then(data =>{
-          setProducts(data.data);
-        } )
+    restClient.get('/getProducts?name=tablet')
+    .then(data =>{
+      setProducts(data.data);
+    } )
   }, []);
 
   console.log(products);

@@ -1,34 +1,31 @@
-const ProductService = require('../../../services/productsService');
-const Mock = require('nordic-dev/mocks');
-const apiDomain = 'https://internal-api.mercadolibre.com';
+const productsService = require('../../../services/productsService');
+const { mockGet } = require('nordic/restclient');
 
-
-const mock = Mock();
-
-beforeAll(()=>{
-    mock.intercept(apiDomain, ['/sites/*'])
-});
-
-afterAll(()=>{
-    mock.restore(apiDomain, ['/sites/*'])
-});
-
-describe('Pruebas en servicio - getProducts',()=>{
-    
-   describe('1) getProducts debería hacer la petición correctamente',()=>{
-    it('Si la petición fue exitosa, debería responder con el objeto entero', async ()=>{
-        const res = await ProductService.getProducts('MLA', 'tablet');
-        expect(typeof res).toBe('object');
-        expect(res.query).toMatch(/tablet/i)
-        expect(res.site_id).toMatch(/mla/i)
-        
+describe('productsService', () => {
+    beforeEach(() => {
+        mockGet.mockResolvedValueOnce({ data: { results: [
+            {
+                id: 'MLA67562',
+                title: 'Ipad Air'
+            }
+        ]}});
     });
-   })
 
-   describe('2) OPCIONAL : manejo de error correcto de getProducts',()=>{
-    it('Si la petición falla, arrojar un array como respuesta', async () => { 
-        const res = await ProductService.getProducts(null);
+    it('1) El método estático getProducts debería responser con el objeto entero cuando la petición es exitosa', async () => {
+        const res = await productsService.getProducts('MLA', 'tablet');
+        expect(mockGet).toHaveBeenCalled();
+        expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search?q=tablet');
+        expect(typeof res).toBe('object');
+    });
+})
+
+describe('OPCIONAL : manejo de error correcto de getProducts', () => {
+    beforeEach(() => {
+       mockGet.mockRejectedValueOnce('error')
+    });
+
+    it('2) Si la petición falla, arrojar un array como respuesta', async () => { 
+        const res = await productsService.getProducts(null)
         expect(res).toBeInstanceOf(Array)
     });
-   })
-});
+})

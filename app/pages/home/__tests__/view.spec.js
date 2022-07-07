@@ -24,12 +24,12 @@ describe('La view de Home', () => {
 
     it('2) Utiliza restclient desde la view', async () => {
         expect(mockGet).toHaveBeenCalled();
-    })
+    });
         
-    it('3) Renderiza los productos de la API', async () => {
+    it('3) Renderiza los productos de la API dentro de una lista', async () => {
         await act(async () => {
             const products = await screen.findAllByRole('listitem');
             expect(products).toHaveLength(1);
         })
-    })
-})
+    });
+});

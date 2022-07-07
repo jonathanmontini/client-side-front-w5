@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`La view de Home 1) Renderiza 1`] = `
+<DocumentFragment>
+  <div
+    class="demo"
+  >
+    <ul>
+      <li>
+        <h2>
+          Samsung
+        </h2>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;
