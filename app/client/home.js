@@ -24,7 +24,6 @@ const HomeView = require('../pages/home/view');
 
 hydrate(
 
-      <HomeView
-      />,
+      <HomeView/>,
   document.getElementById('root-app'),
 );
