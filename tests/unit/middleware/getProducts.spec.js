@@ -1,6 +1,6 @@
 const fetchProducts = require('../../../api/getProducts');
 const {createRequest,createResponse} = require('node-mocks-http');
-const ProductService = require('../../../services/productService');
+const ProductService = require('../../../services/productsService');
 
 describe('1) fetchProducts', () => {
     const req = createRequest({

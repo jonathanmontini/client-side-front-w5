@@ -15,7 +15,7 @@ const restClient = require('nordic/restclient')({timeout:5000,baseURL: '/api'});
  * View Component
  */
 function View(props) {
-  const [prod, setProd ] = useState([])
+  const [products, setProducts ] = useState([])
   const {  translations, imagesPrefix } = props;
   const preloadedState = {
    
@@ -25,15 +25,11 @@ function View(props) {
   useEffect(()=>{
         restClient.get('/getProducts?name=tablet')
         .then(data =>{
-
-          setProd(data.data)
-
-          
+          setProducts(data.data);
         } )
-          
-  }, [])
+  }, []);
 
-  console.log(prod)
+  console.log(products);
 
   return (
     <div className="demo">
@@ -53,8 +49,17 @@ function View(props) {
       </Script>
       <Script src="vendor.js" />
       <Script src="home.js" />
-     
-   <h1>hola</h1>
+      <ul>
+      {
+        products.length 
+        ? products.map(p => (
+          <li key={p.id}>
+            <h2>{p.title}</h2>
+          </li>
+        ))
+        : null
+      }
+      </ul>
     </div>
   );
 }

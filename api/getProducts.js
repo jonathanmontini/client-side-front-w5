@@ -1,10 +1,10 @@
-const productService = require('../services/productService.js');
+const productService = require('../services/productsService.js');
 
 function fetchProducts(req,res,next){
     const {name} = req.query;
 
     productService.getProducts(req.platform.siteId, name)
-    .then(data => res.json(data))
+        .then(data => res.json(data.results))
 }
 
 

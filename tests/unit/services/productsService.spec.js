@@ -1,4 +1,4 @@
-const ProductService = require('../../../services/productService');
+const ProductService = require('../../../services/productsService');
 const Mock = require('nordic-dev/mocks');
 const apiDomain = 'https://internal-api.mercadolibre.com';
 
