@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
     const {name} = req.query;
 
     productsService.getProducts(req.platform.siteId, name)
-        .then(data => res.json(data.results))
+        .then(data => res.json(data.results));
 })
 
 module.exports = router;

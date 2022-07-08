@@ -1,6 +1,3 @@
-/**
- * Module dependencies
- */
 const React = require('react');
 const { useEffect, useState } = React;
 const PropTypes = require('prop-types');
@@ -10,20 +7,20 @@ const Style = require('nordic/style');
 const serialize = require('serialize-javascript');
 const { injectI18n } = require('nordic/i18n');
 const Image = require('nordic/image');
-const restClient = require('nordic/restclient')({ timeout: 5000, baseURL: '/api' });
-/**
- * View Component
- */
+const restClient = require('nordic/restclient')({ 
+  timeout: 5000, 
+  baseURL: '/api' 
+});
+
 function View(props) {
-  const { imagesPrefix, prodlist } = props;
+  const { imagesPrefix, products } = props;
   const preloadedState = {
     imagesPrefix,
-    prodlist
+    products
   };
 
-  const [products, setProducts] = useState(prodlist)
-  const [currentPage, setCurrentPage] = useState(0)
-
+  const [productList, setProductList] = useState(products);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const handleSearch = () => {
     setCurrentPage(prev => prev + 10)
@@ -34,7 +31,7 @@ function View(props) {
       }
     })
       .then(data => {
-        setProducts(data.data)
+        setProductList(data.data)
       })
   }
 
@@ -42,14 +39,9 @@ function View(props) {
   //   setCurrentPage(prev => prev + 10)
   // }
 
-
-
   // useEffect(() => {
   //   handleSearch()
-
   // }, [currentPage])
-
-
 
   return (
     <div className="demo">
@@ -60,7 +52,7 @@ function View(props) {
         </title>
       </Head>
 
-      <Style href="home.css" />
+      <Style href="productList.css" />
       <Script>
         {`
            window.__PRELOADED_STATE__ = ${serialize(preloadedState, { isJSON: true })};
@@ -71,12 +63,12 @@ function View(props) {
       <Script src="productList.js" />
 
       <h1>productList</h1>
-      <button onClick={handleSearch}  role='pagination'>NEXT</button>
+      <button onClick={handleSearch}>Siguiente</button>
       <ol>
         {
-          products.length
-            ? products.map(prod => {
-              const { id, title, thumbnail, price } = prod;
+          productList.length
+            ? productList.map(p => {
+              const { id, title, thumbnail, price } = p;
 
               return (
                 <li key={id} className='card' >
@@ -86,14 +78,11 @@ function View(props) {
                   <div className="info-products">
                     <h4 className='price'>${price}</h4>
                     <h3 className='title-product'>{title} </h3>
-
                   </div>
-
-
                 </li>
               )
             })
-            : <h4>No se encontraron productos</h4>
+            : <h4>No se encontraron productos.</h4>
         }
       </ol>
     </div>
