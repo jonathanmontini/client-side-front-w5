@@ -20,7 +20,11 @@ function View(props) {
   };
 
   useEffect(()=>{
-    restClient.get('/getProducts?name=tablet')
+    restClient.get('/getProducts', {
+      params: {
+        name: 'tablet'
+      }
+    })
     .then(data =>{
       setProducts(data.data);
     } )

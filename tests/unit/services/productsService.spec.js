@@ -14,7 +14,13 @@ describe('productsService', () => {
     it('1) El método estático getProducts debería responser con el objeto entero cuando la petición es exitosa', async () => {
         const res = await productsService.getProducts('MLA', 'tablet');
         expect(mockGet).toHaveBeenCalled();
-        expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search?q=tablet');
+        expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
+            params: {
+                q: 'tablet',
+                limit: undefined,
+                offset: undefined
+            }
+        });
         expect(typeof res).toBe('object');
     });
 })

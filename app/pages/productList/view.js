@@ -25,14 +25,15 @@ function View(props) {
   const handleSearch = () => {
     setCurrentPage(prev => prev + 10)
 
-    restClient.get('/getProductsForPage', {
+    restClient.get('/getProducts', {
       params: {
+        name: 'celular',
         offset: currentPage + 10
       }
     })
       .then(data => {
         setProductList(data.data)
-      })
+      });
   }
 
   // const handleCurrent = () => {

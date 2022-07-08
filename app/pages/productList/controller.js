@@ -6,11 +6,11 @@ const ProductsService = require('../../../services/productsService');
 
 const imagesPrefix = config.assets.prefix;
 
-exports.fetchProductsList = function fetchProductsList(req, res, next){
+exports.fetchProducts = function fetchProductsList(req, res, next){
 
     const siteId = req.platform.siteId
 
-    ProductsService.getProductsForPage(siteId, 'celular', 10, 0)
+    ProductsService.getProducts(siteId, 'tablet', 0, 10)
         .then(response =>{
             res.locals.products = response;
             next();

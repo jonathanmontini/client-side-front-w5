@@ -2,12 +2,12 @@
  * Module dependencies
  */
  const router = require('nordic/ragnar').router();
- const { fetchProductsList, render } = require('./controller');
+ const { fetchProducts, render } = require('./controller');
  
  /**
   * Routers
   */
- router.get('/', fetchProductsList, render);
+ router.get('/', fetchProducts, render);
  
  /**
   * Expose router
