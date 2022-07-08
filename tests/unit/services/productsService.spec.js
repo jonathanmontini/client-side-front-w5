@@ -1,7 +1,7 @@
 const productsService = require('../../../services/productsService');
 const { mockGet } = require('nordic/restclient');
 
-describe('productsService', () => {
+describe('Ejercicio 1 - productsService', () => {
     beforeEach(() => {
         mockGet.mockResolvedValueOnce({ data: { results: [
             {
@@ -17,8 +17,8 @@ describe('productsService', () => {
         expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
             params: {
                 q: 'tablet',
-                limit: undefined,
-                offset: undefined
+                offset: undefined,
+                limit: undefined
             }
         });
         expect(typeof res).toBe('object');
@@ -34,4 +34,53 @@ describe('OPCIONAL : manejo de error correcto de getProducts', () => {
         const res = await productsService.getProducts(null)
         expect(res).toBeInstanceOf(Array)
     });
-})
+});
+
+describe('Ejercicio 2 - productsService', () => {
+    beforeEach(() => {
+        mockGet.mockResolvedValueOnce({ data: { results: [
+            {
+                id: 'MLA67562',
+                title: 'Ipad Air'
+            }
+        ]}});
+    });
+
+    it('3) Hace el llamado a la API utilizando la propiedad `offset` para cargar los siguientes productos', async () => {
+        const res = await productsService.getProducts('MLA', 'tablet', 10);
+        expect(mockGet).toHaveBeenCalled();
+        expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
+            params: {
+                q: 'tablet',
+                offset: 10,
+                limit: undefined
+            }
+        });
+        expect(typeof res).toBe('object');
+    });
+});
+
+describe('OPCIONAL - productsService', () => {
+    beforeEach(() => {
+        mockGet.mockResolvedValueOnce({ data: { results: [
+            {
+                id: 'MLA67562',
+                title: 'Ipad Air'
+            }
+        ]}});
+    });
+
+    it('3) Hace el llamado a la API utilizando la propiedad `offset` para cargar los siguientes productos', async () => {
+        const res = await productsService.getProducts('MLA', 'tablet', 10, 10);
+        expect(mockGet).toHaveBeenCalled();
+        expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
+            params: {
+                q: 'tablet',
+                offset: 10,
+                limit: 10
+            }
+        });
+        expect(typeof res).toBe('object');
+    });
+});
+
