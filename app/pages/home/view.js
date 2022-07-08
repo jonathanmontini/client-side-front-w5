@@ -8,16 +8,15 @@ const serialize = require('serialize-javascript');
 const { injectI18n } = require('nordic/i18n');
 const Image = require('nordic/image');
 const restClient = require('nordic/restclient')({
-  timeout:5000,
+  timeout: 5000,
   baseURL: '/api'
 });
 
 function View(props) {
   const [products, setProducts ] = useState([])
-  const {  translations, imagesPrefix } = props;
+  const { imagesPrefix } = props;
   const preloadedState = {
-   
-   
+    imagesPrefix,
   };
 
   useEffect(()=>{
@@ -27,7 +26,6 @@ function View(props) {
     } )
   }, []);
 
-  console.log(products);
 
   return (
     <div className="demo">
@@ -47,12 +45,16 @@ function View(props) {
       </Script>
       <Script src="vendor.js" />
       <Script src="home.js" />
+
       <ul>
       {
         products.length 
         ? products.map(p => (
           <li key={p.id}>
-            <h2>{p.title}</h2>
+            <h5>{p.title}</h5>
+            <a href={p.permalink}>
+              <Image src={p.thumbnail} alt={p.title} lazyload="off" />
+            </a>
           </li>
         ))
         : null

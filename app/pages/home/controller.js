@@ -1,16 +1,20 @@
-/**
- * Module dependencies
- */
 const React = require('react');
 const View = require('./view');
+const config = require('nordic/config');
+const ImageProvider = require('nordic/image/provider');
 
+const imagesPrefix = config.assets.prefix;
 
 exports.render = function render(req, res) {
  
-  const Demo = props => <View {...props} />
+  const Home = props => (
+    <ImageProvider prefix={imagesPrefix}>
+      <View {...props} />
+    </ImageProvider> 
+  )
 
-  res.render(Demo, {
-    
+  res.render(Home, {
+    imagesPrefix
   }, {
     layoutOptions: {
       staticMarkup: false,
