@@ -14,9 +14,34 @@ exports[`La view de Home 1) Renderiza 1`] = `
       NEXT
     </button>
     <ol>
-      <h4>
-        No se encontraron productos
-      </h4>
+      <li
+        class="card"
+      >
+        <figure
+          class="img"
+        >
+          <img
+            alt="Samsung"
+            class=""
+            decoding="async"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          />
+        </figure>
+        <div
+          class="info-products"
+        >
+          <h4
+            class="price"
+          >
+            $
+          </h4>
+          <h3
+            class="title-product"
+          >
+            Samsung 
+          </h3>
+        </div>
+      </li>
     </ol>
   </div>
 </DocumentFragment>

@@ -15,21 +15,22 @@ const restClient = require('nordic/restclient')({ timeout: 5000, baseURL: '/api'
  * View Component
  */
 function View(props) {
-  const { imagesPrefix } = props;
+  const { imagesPrefix, prodlist } = props;
   const preloadedState = {
-    imagesPrefix
+    imagesPrefix,
+    prodlist
   };
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState(prodlist)
   const [currentPage, setCurrentPage] = useState(0)
 
 
-  const handleSearch = (name, limit) => {
+  const handleSearch = () => {
+    setCurrentPage(prev => prev + 10)
+
     restClient.get('/getProductsForPage', {
       params: {
-        name,
-        limit,
-        offset: currentPage
+        offset: currentPage + 10
       }
     })
       .then(data => {
@@ -37,16 +38,16 @@ function View(props) {
       })
   }
 
-  const handleCurrent = () => {
-    setCurrentPage(prev => prev + 10)
-  }
+  // const handleCurrent = () => {
+  //   setCurrentPage(prev => prev + 10)
+  // }
 
 
 
-  useEffect(() => {
-    handleSearch('tablet', 10)
+  // useEffect(() => {
+  //   handleSearch()
 
-  }, [currentPage])
+  // }, [currentPage])
 
 
 
@@ -70,7 +71,7 @@ function View(props) {
       <Script src="productList.js" />
 
       <h1>productList</h1>
-      <button onClick={handleCurrent}  role='pagination'>NEXT</button>
+      <button onClick={handleSearch}  role='pagination'>NEXT</button>
       <ol>
         {
           products.length
@@ -79,9 +80,9 @@ function View(props) {
 
               return (
                 <li key={id} className='card' >
-                  <div className="img">
+                  <figure className="img">
                     <Image src={thumbnail} alt={title} lazyload="off" />
-                  </div>
+                  </figure>
                   <div className="info-products">
                     <h4 className='price'>${price}</h4>
                     <h3 className='title-product'>{title} </h3>
