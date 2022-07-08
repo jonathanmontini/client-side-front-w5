@@ -15,8 +15,7 @@ const ProductListView = require('../pages/productList/view');
 
 
 const {
-    site,
-    translations,
+    prodlist,
     imagesPrefix
 } = window.__PRELOADED_STATE__;
 
@@ -25,7 +24,7 @@ const {
 
 hydrate(
     <ImageProvider prefix={imagesPrefix}>
-        <ProductListView />
+        <ProductListView prodlist={prodlist} />
     </ImageProvider>,
     document.getElementById('root-app'),
 );
