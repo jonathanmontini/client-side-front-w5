@@ -1,13 +1,8 @@
-/**
- * Module dependencies
- */
 const React = require('react');
 const View = require('./view');
 const config = require('nordic/config');
 const ImageProvider = require('nordic/image/provider');
 const ProductsService = require('../../../services/productsService')
-
-
 
 const imagesPrefix = config.assets.prefix;
 
@@ -21,8 +16,6 @@ exports.fetchProductsList = function fetchProductsList(req, res, next){
         next()
     } )
     .catch(err =>  next(err));
-
-    
 }
 
 
