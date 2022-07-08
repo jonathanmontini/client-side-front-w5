@@ -10,6 +10,18 @@ class Service {
     return restclient.get(`/sites/${siteId}/search?q=${name}`)
       .then(response => normalize(response.data.results));
   };
+
+  static getProductsForPage(siteId,name,limit, offset) {
+    return restclient.get(`/sites/${siteId}/search`,{
+      params:{
+        q:name,
+        limit: limit || 12,
+        offset: offset || 0
+      }
+    })
+      .then(response => normalize(response.data.results));
+  };
+
 }
 
 module.exports = Service;

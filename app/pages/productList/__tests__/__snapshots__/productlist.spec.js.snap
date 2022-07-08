@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`La view de Home 1) Renderiza 1`] = `
+<DocumentFragment>
+  <div
+    class="demo"
+  >
+    <h1>
+      productList
+    </h1>
+    <button
+      role="pagination"
+    >
+      NEXT
+    </button>
+    <ol>
+      <h4>
+        No se encontraron productos
+      </h4>
+    </ol>
+  </div>
+</DocumentFragment>
+`;
