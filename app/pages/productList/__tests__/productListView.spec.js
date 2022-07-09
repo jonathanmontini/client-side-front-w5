@@ -8,12 +8,13 @@ const { mockGet } = restClient;
 
 describe('La view de ProductList', () => {
     let component; 
+    const i18n = { gettext: text => text };
     let mockProducts = [{id:'MLA12874', title:'Samsung', thumbnail:'foto', permalink:'link'}]
 
     beforeEach(async() => {  
         await act(async () =>{
             mockGet.mockResolvedValueOnce({data: [{id:'MLA12874', title:'Moto', thumbnail:'foto', permalink:'link'}]})
-            component= await waitFor(() => render(<ProductListView products={mockProducts} />));
+            component= await waitFor(() => render(<ProductListView products={mockProducts} i18n={i18n}/>));
         })
     });
     
@@ -34,7 +35,7 @@ describe('La view de ProductList', () => {
 
     it('Opcional: Si no hay productos deberia mostrar el msj "no se encontraron productos"', async () => {
         await act(async () =>{
-            component= await waitFor(() => render(<ProductListView products={[]}  />));
+            component= await waitFor(() => render(<ProductListView products={[]} i18n={i18n}/>));
         })
         const text = screen.getByText(/no se encontraron productos/i)
         expect(text).toBeInTheDocument();
