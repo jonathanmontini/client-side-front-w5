@@ -10,6 +10,7 @@ const { mockGet } = restClient;
 describe('La view de Home', () => {
     describe('Ejercicio 1', () => {
         let component; 
+        const i18n = { gettext: text => text };
 
         beforeEach(async () => {  
             await act(async () => {
@@ -21,7 +22,7 @@ describe('La view de Home', () => {
                         thumbnail: 'http://http2.mlstatic.com/D_838903-MLA46771080799_072021-I.jpg'
                     }]
                 });
-                component = await waitFor(() => render(<HomeView />));
+                component = await waitFor(() => render(<HomeView i18n={i18n}/>));
             });
         });
         
@@ -40,8 +41,9 @@ describe('La view de Home', () => {
         });
     })
 
-    xdescribe('Ejercicio 2', () => {
+    describe('Ejercicio 2', () => {
         let component; 
+        const i18n = { gettext: text => text };
         let permalink = 'https://www.mercadolibre.com.ar/samsung-galaxy-m12-5000-mah-dual-sim-128-gb-black-4-gb-ram/p/MLA18192280';
         let thumbnail = 'http://http2.mlstatic.com/D_838903-MLA46771080799_072021-I.jpg';
 
@@ -55,7 +57,7 @@ describe('La view de Home', () => {
                         thumbnail
                     }]
                 });
-                component = await waitFor(() => render(<HomeView />));
+                component = await waitFor(() => render(<HomeView i18n={i18n}/>));
             });
         });
 
