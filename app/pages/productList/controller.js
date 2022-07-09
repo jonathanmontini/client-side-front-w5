@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 const React = require('react');
 const View = require('./view');
 const config = require('nordic/config');
@@ -10,7 +11,7 @@ exports.fetchProducts = function fetchProductsList(req, res, next){
 
     const siteId = req.platform.siteId
 
-    ProductsService.getProducts(siteId, 'tablet', 0, 10)
+    ProductsService.getProducts(siteId, 'celular', 0, 10)
         .then(response =>{
             res.locals.products = response;
             next();
@@ -30,6 +31,5 @@ exports.render = function render(req, res) {
     res.render(ProductList, {
         imagesPrefix,
         products : res.locals.products
-
     });
 };

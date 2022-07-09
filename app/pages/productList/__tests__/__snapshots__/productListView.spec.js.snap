@@ -9,7 +9,7 @@ exports[`La view de ProductList 1) Renderiza 1`] = `
       productList
     </h1>
     <button>
-      NEXT
+      Siguiente
     </button>
     <ol>
       <li

@@ -3,7 +3,7 @@ const api = require('../../../index');
 const ProductService = require('../../../services/productsService');
 const { mockGet } = require('nordic/restclient');
 
-describe('El router de /getProducts', () => {
+describe('Ejercicio 1 - El router de /getProducts', () => {
     mockGet.mockResolvedValueOnce({ data: {
         results: [
             { 

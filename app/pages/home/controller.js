@@ -5,8 +5,10 @@ const ImageProvider = require('nordic/image/provider');
 
 const imagesPrefix = config.assets.prefix;
 
+/* istanbul ignore next */
 exports.render = function render(req, res) {
  
+/* istanbul ignore next */
   const Home = props => (
     <ImageProvider prefix={imagesPrefix}>
       <View {...props} />
