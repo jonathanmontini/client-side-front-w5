@@ -25,7 +25,6 @@
     "i18n:download": "i18n download"
   },
   "dependencies": {
-    "node-mocks-http": "1.11.0",
     "nordic": "^7.12.1"
   },
   "devDependencies": {

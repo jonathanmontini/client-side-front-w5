@@ -36,7 +36,7 @@ describe('OPCIONAL : manejo de error correcto de getProducts', () => {
     });
 });
 
-describe('Ejercicio 2 - productsService', () => {
+xdescribe('Ejercicio 2 - productsService', () => {
     beforeEach(() => {
         mockGet.mockResolvedValueOnce({ data: { results: [
             {
@@ -60,7 +60,7 @@ describe('Ejercicio 2 - productsService', () => {
     });
 });
 
-describe('OPCIONAL - productsService', () => {
+xdescribe('OPCIONAL - productsService', () => {
     beforeEach(() => {
         mockGet.mockResolvedValueOnce({ data: { results: [
             {

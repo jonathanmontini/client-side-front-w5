@@ -40,7 +40,7 @@ describe('La view de Home', () => {
         });
     })
 
-    describe('Ejercicio 2', () => {
+    xdescribe('Ejercicio 2', () => {
         let component; 
         let permalink = 'https://www.mercadolibre.com.ar/samsung-galaxy-m12-5000-mah-dual-sim-128-gb-black-4-gb-ram/p/MLA18192280';
         let thumbnail = 'http://http2.mlstatic.com/D_838903-MLA46771080799_072021-I.jpg';

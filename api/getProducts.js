@@ -1,12 +1,7 @@
 const router = require('nordic/ragnar').router();
-const productsService = require('../services/productsService.js');
-
-router.get('/', (req, res) => {
-    const { name, offset, limit } = req.query;
-
-    productsService.getProducts(req.platform.siteId, name, offset, limit)
-        .then(data => res.json(data))
-        .catch(err => console.error(err));
-})
+/**
+ * Aquí deberás crear el endpoint con el método GET, el cuál consuma
+ * el servicio que devuelve los productos de la API de MeLi.
+ */
 
 module.exports = router;
