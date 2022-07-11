@@ -27,7 +27,7 @@ router.use(polyfillsMiddleware(config.polyfillLimits));
 /**
  * Redirect
  */
-router.get('/', (req, res) => res.redirect(`${config.ragnar.basePath}home`));
+router.get('/', (req, res) => res.redirect(`${config.ragnar.basePath}products`));
 
 /**
  * Mount routers
