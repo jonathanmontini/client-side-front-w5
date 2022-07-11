@@ -11,7 +11,7 @@ describe('Ejercicio 1 - productsService', () => {
         ]}});
     });
 
-    it('1) El método estático getProducts debería responser con el objeto entero cuando la petición es exitosa', async () => {
+    it('1) El método estático getProducts debería responser con un array de productos cuando la petición es exitosa', async () => {
         const res = await productsService.getProducts('MLA', 'tablet');
         expect(mockGet).toHaveBeenCalled();
         expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
@@ -70,7 +70,7 @@ xdescribe('OPCIONAL - productsService', () => {
         ]}});
     });
 
-    it('3) Hace el llamado a la API utilizando la propiedad `offset` para cargar los siguientes productos', async () => {
+    it('3) Hace el llamado a la API utilizando las propiedades `offset` y `limit` para cargar los siguientes productos', async () => {
         const res = await productsService.getProducts('MLA', 'tablet', 10, 10);
         expect(mockGet).toHaveBeenCalled();
         expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
