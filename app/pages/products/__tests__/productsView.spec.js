@@ -1,5 +1,5 @@
 const React = require('react');
-const HomeView = require('../view');
+const ProductsView = require('../view');
 const { render, screen, act, waitFor } = require('@testing-library/react');
 require('core-js');
 const restClient = require('nordic/restclient');
@@ -7,7 +7,7 @@ jest.mock('nordic/restclient');
 
 const { mockGet } = restClient;
 
-describe('La view de Home', () => {
+describe('La view de Products', () => {
     describe('Ejercicio 1', () => {
         let component; 
         const i18n = { gettext: text => text };
@@ -22,7 +22,7 @@ describe('La view de Home', () => {
                         thumbnail: 'http://http2.mlstatic.com/D_838903-MLA46771080799_072021-I.jpg'
                     }]
                 });
-                component = await waitFor(() => render(<HomeView i18n={i18n}/>));
+                component = render(<ProductsView i18n={i18n}/>);
             });
         });
         
@@ -31,8 +31,9 @@ describe('La view de Home', () => {
             expect(asFragment()).toMatchSnapshot();
         });
 
-        it('2) Utiliza Restclient desde la view para hacer un llamado a /api', async () => {
+        it('2) Utiliza Restclient desde la view para hacer un llamado a /api', () => {
             expect(mockGet).toHaveBeenCalled();
+            expect(mockGet.mock.calls[0][0].includes('/getProducts')).toBeTruthy();
         });
             
         it('3) Renderiza los productos de la API dentro de una lista', async () => {
@@ -41,7 +42,7 @@ describe('La view de Home', () => {
         });
     })
 
-    describe('Ejercicio 2', () => {
+    xdescribe('Ejercicio 2', () => {
         let component; 
         const i18n = { gettext: text => text };
         let permalink = 'https://www.mercadolibre.com.ar/samsung-galaxy-m12-5000-mah-dual-sim-128-gb-black-4-gb-ram/p/MLA18192280';
@@ -57,7 +58,7 @@ describe('La view de Home', () => {
                         thumbnail
                     }]
                 });
-                component = await waitFor(() => render(<HomeView i18n={i18n}/>));
+                component = render(<ProductsView i18n={i18n}/>);
             });
         });
 

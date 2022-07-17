@@ -11,26 +11,24 @@ describe('Ejercicio 1 - productsService', () => {
         ]}});
     });
 
-    it('1) El método estático getProducts debería responser con un array de productos cuando la petición es exitosa', async () => {
+    it('1) El método estático getProducts debería responder con un array de productos cuando la petición es exitosa', async () => {
         const res = await productsService.getProducts('MLA', 'tablet');
         expect(mockGet).toHaveBeenCalled();
         expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
             params: {
                 q: 'tablet',
-                offset: undefined,
-                limit: undefined
             }
         });
         expect(typeof res).toBe('object');
     });
 })
 
-describe('OPCIONAL : manejo de error correcto de getProducts', () => {
+describe('OPCIONAL: manejo de error de getProducts', () => {
     beforeEach(() => {
        mockGet.mockRejectedValueOnce('error')
     });
 
-    it('2) Si la petición falla, arrojar un array como respuesta', async () => { 
+    it('2) Si la petición falla, arrojar un array vacío como respuesta', async () => { 
         const res = await productsService.getProducts(null)
         expect(res).toBeInstanceOf(Array)
     });
