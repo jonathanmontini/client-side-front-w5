@@ -40,7 +40,7 @@ describe('La view de Products', () => {
             const products = await screen.findAllByRole('listitem');
             expect(products).toHaveLength(1);
         });
-    })
+    });
 
     xdescribe('Ejercicio 2', () => {
         let component; 
@@ -56,8 +56,8 @@ describe('La view de Products', () => {
                         title: 'Samsung', 
                         permalink,
                         thumbnail
-                    }]
-                });
+                    }
+                ]});
                 component = render(<ProductsView i18n={i18n}/>);
             });
         });
@@ -65,11 +65,11 @@ describe('La view de Products', () => {
         it('4) Renderiza una imagen con el thumbnail del producto', async () => {
             const img = await screen.findByRole('img');
             expect(img.src).toBe(thumbnail);
-        })
+        });
 
-        it('5) Redirige a la URL del detalle del producto en Mercado Libre', async () => {
-            const anchor = await screen.findByRole('link');
-            expect(anchor.href).toBe(permalink);
-        })
-    })
+        it('5) Clickear la imagen redirige a la URL del detalle del producto en Mercado Libre', async () => {
+            const link = await screen.findByRole('link');
+            expect(link.href).toBe(permalink);
+        });
+    });
 });
