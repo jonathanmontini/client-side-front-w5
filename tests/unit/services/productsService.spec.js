@@ -69,13 +69,13 @@ xdescribe('OPCIONAL - productsService', () => {
     });
 
     it('3) Hace el llamado a la API utilizando las propiedades `offset` y `limit` para cargar los siguientes productos', async () => {
-        const res = await productsService.getProducts('MLA', 'tablet', 10, 10);
+        const res = await productsService.getProducts('MLA', 'tablet', 10, 20);
         expect(mockGet).toHaveBeenCalled();
         expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
             params: {
                 q: 'tablet',
                 offset: 10,
-                limit: 10
+                limit: 20
             }
         });
         expect(typeof res).toBe('object');

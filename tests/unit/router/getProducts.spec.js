@@ -1,6 +1,6 @@
 const request = require('supertest');
 const api = require('../../../index');
-const ProductService = require('../../../services/productsService');
+const ProductsService = require('../../../services/productsService');
 const { mockGet } = require('nordic/restclient');
 
 describe('Ejercicio 1 - El router de /getProducts', () => {
@@ -13,12 +13,12 @@ describe('Ejercicio 1 - El router de /getProducts', () => {
         ]
     }});
 
-    const mockGetProducts = jest.spyOn(ProductService, 'getProducts');
+    const mockGetProducts = jest.spyOn(ProductsService, 'getProducts');
 
-    it('1) Utiliza el servicio para buscar los productos de la API', async () => {
+    it('1) Utiliza el servicio para buscar los productos de la API de MeLi', async () => {
         const response = await request(api.app).get('/api/getProducts?domain_override=mercadolibre.com.ar&name=tablet');
         expect(mockGetProducts).toHaveBeenCalled();
-        let products = await JSON.parse(response.res.text);
+        const products = await JSON.parse(response.res.text);
         expect(products).toBeDefined();
         expect(typeof products).toBe('object');
     });
