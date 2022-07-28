@@ -40,11 +40,11 @@ describe('La view de ProductList', () => {
         expect(samsung).toBeInTheDocument();
     });
     
-    it('3) BONUS: debe modificar la lista de productos al hacer click en el botón', async () => {
+    it('3) BONUS: debe modificar la lista de productos al clickear el botón', async () => {
         await act(async () => {
             const button = await screen.findByRole('button');
             fireEvent.click(button);
-        })
+        });
         
         const title = await screen.findByText('Motorola');
         expect(title).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe('La view de ProductList', () => {
 
     it('OPCIONAL: si no hay productos deberia mostrar el mensaje "No se encontraron productos"', async () => {
         await act(async () =>{
-            component= await waitFor(() => render(<ProductListView products={[]} i18n={i18n}/>));
+            component = await waitFor(() => render(<ProductListView products={[]} i18n={i18n}/>));
         })
         const text = screen.getByText(/no se encontraron productos/i);
         expect(text).toBeInTheDocument();
