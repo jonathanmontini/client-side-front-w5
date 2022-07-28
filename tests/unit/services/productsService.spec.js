@@ -25,12 +25,13 @@ describe('Ejercicio 1 - productsService', () => {
 
 describe('OPCIONAL: manejo de error de getProducts', () => {
     beforeEach(() => {
-       mockGet.mockRejectedValueOnce('error')
+       mockGet.mockRejectedValueOnce('error');
     });
 
     it('2) Si la petición falla, arrojar un array vacío como respuesta', async () => { 
-        const res = await productsService.getProducts(null)
-        expect(res).toBeInstanceOf(Array)
+        const res = await productsService.getProducts(null);
+        expect(res).toBeInstanceOf(Array);
+        expect(res.length).toBe(0);
     });
 });
 
