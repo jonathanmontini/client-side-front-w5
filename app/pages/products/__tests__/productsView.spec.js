@@ -22,7 +22,7 @@ describe('La view de Products', () => {
                         thumbnail: 'http://http2.mlstatic.com/D_838903-MLA46771080799_072021-I.jpg'
                     }]
                 });
-                component = render(<ProductsView i18n={i18n}/>);
+                await waitFor(() => component = render(<ProductsView i18n={i18n} />));
             });
         });
         
@@ -39,10 +39,11 @@ describe('La view de Products', () => {
         it('3) Renderiza los productos de la API dentro de una lista', async () => {
             const products = await screen.findAllByRole('listitem');
             expect(products).toHaveLength(1);
+            expect(products[0]).toHaveTextContent(/samsung/i);
         });
     });
 
-    xdescribe('Ejercicio 2', () => {
+    describe('Ejercicio 2', () => {
         let component; 
         const i18n = { gettext: text => text };
         let permalink = 'https://www.mercadolibre.com.ar/samsung-galaxy-m12-5000-mah-dual-sim-128-gb-black-4-gb-ram/p/MLA18192280';
@@ -50,7 +51,7 @@ describe('La view de Products', () => {
 
         beforeEach(async () => {  
             await act(async () => {
-                mockGet.mockResolvedValueOnce({data: [
+                mockGet.mockResolvedValueOnce({ data: [
                     {
                         id: 1, 
                         title: 'Samsung', 
@@ -58,7 +59,7 @@ describe('La view de Products', () => {
                         thumbnail
                     }
                 ]});
-                component = render(<ProductsView i18n={i18n}/>);
+                await waitFor(() => component = render(<ProductsView i18n={i18n} />));
             });
         });
 
@@ -68,7 +69,7 @@ describe('La view de Products', () => {
         });
 
         it('5) Clickear la imagen redirige a la URL del detalle del producto en Mercado Libre', async () => {
-            const link = await screen.findByRole('link');
+            const link = await screen.findByRole('link');            
             expect(link.href).toBe(permalink);
         });
     });
