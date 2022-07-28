@@ -17,8 +17,9 @@ describe('Ejercicio 1 - El router de /getProducts', () => {
 
     it('1) Utiliza el servicio para buscar los productos de la API de MeLi', async () => {
         const response = await request(api.app).get('/api/getProducts?domain_override=mercadolibre.com.ar&name=tablet');
-        expect(mockGetProducts).toHaveBeenCalled();
         const products = await JSON.parse(response.res.text);
+
+        expect(mockGetProducts).toHaveBeenCalled();
         expect(products).toBeDefined();
         expect(typeof products).toBe('object');
     });
