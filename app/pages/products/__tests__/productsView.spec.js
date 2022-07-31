@@ -43,7 +43,7 @@ describe('La view de Products', () => {
         });
     });
 
-    describe('Ejercicio 2', () => {
+    xdescribe('Ejercicio 2', () => {
         let component; 
         const i18n = { gettext: text => text };
         let permalink = 'https://www.mercadolibre.com.ar/samsung-galaxy-m12-5000-mah-dual-sim-128-gb-black-4-gb-ram/p/MLA18192280';
