@@ -33,7 +33,7 @@ describe('La view de Products', () => {
 
         it('2) Utiliza Restclient desde la view para hacer un llamado a /api', () => {
             expect(mockGet).toHaveBeenCalled();
-            expect(mockGet.mock.calls[0][0].includes('/getProducts')).toBeTruthy();
+            expect(mockGet.mock.calls[0][0].includes('/get-products')).toBeTruthy();
         });
             
         it('3) Renderiza los productos de la API dentro de una lista', async () => {

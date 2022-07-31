@@ -35,7 +35,7 @@ describe('OPCIONAL: manejo de error de getProducts', () => {
     });
 });
 
-xdescribe('Ejercicio 2 - productsService', () => {
+xdescribe('Ejercitación Integradora - productsService', () => {
     beforeEach(() => {
         mockGet.mockResolvedValueOnce({ data: { results: [
             {
