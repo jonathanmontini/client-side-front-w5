@@ -18,7 +18,7 @@ describe('La view de ProductList', () => {
         }
     ];
 
-    beforeEach(async() => {  
+    beforeEach(async () => {  
         await act(async () =>{
             mockGet.mockResolvedValueOnce({ data: [{ 
                 id: 'MLA12874', 
@@ -54,7 +54,7 @@ describe('La view de ProductList', () => {
         await act(async () =>{
             component = await waitFor(() => render(<ProductListView products={[]} i18n={i18n}/>));
         })
-        const text = screen.getByText(/no se encontraron productos/i);
-        expect(text).toBeInTheDocument();
+        const message = screen.getByText(/no se encontraron productos/i);
+        expect(message).toBeInTheDocument();
     });
 });
