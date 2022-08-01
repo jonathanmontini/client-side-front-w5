@@ -69,7 +69,7 @@ xdescribe('OPCIONAL - productsService', () => {
         ]}});
     });
 
-    it('3) Hace el llamado a la API utilizando las propiedades `offset` y `limit` para cargar los siguientes productos', async () => {
+    it('4) Hace el llamado a la API utilizando las propiedades `offset` y `limit` para cargar los siguientes productos', async () => {
         const res = await productsService.getProducts('MLA', 'tablet', 10, 20);
         expect(mockGet).toHaveBeenCalled();
         expect(mockGet).toHaveBeenCalledWith('/sites/MLA/search', {
