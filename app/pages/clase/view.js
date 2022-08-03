@@ -21,3 +21,5 @@ function View(props) {
     </>
   );
 }
+
+module.exports = View;
