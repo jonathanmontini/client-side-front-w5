@@ -19,6 +19,7 @@ const path = require("path");
 const entrypoints = {
   clase: "./app/client/clase.js",
   products: "./app/client/products.js",
+  productList: "./app/client/productList.js",
 };
 
 const generateLegacyBundles = (entryPoints) =>

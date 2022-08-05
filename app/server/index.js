@@ -17,6 +17,7 @@ require("../../mocks");
  */
 const clase = require("../pages/clase");
 const products = require("../pages/products");
+const productsList = require("../pages/productList");
 
 /**
  * Use global middlewares
@@ -37,6 +38,7 @@ router.get("/", (req, res) =>
  */
 router.use("/clase", clase);
 router.use("/products", products);
+router.use("/productsList", productsList);
 
 /**
  * Expose router

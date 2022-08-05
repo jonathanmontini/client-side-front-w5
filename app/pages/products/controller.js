@@ -2,7 +2,6 @@ const React = require("react");
 const View = require("./view");
 const config = require("nordic/config");
 const ImageProvider = require("nordic/image/provider");
-const I18n = require("nordic/i18n");
 const I18nProvider = require("nordic/i18n/I18nProvider");
 
 const imagesPrefix = config.assets.prefix;

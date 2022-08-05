@@ -8,10 +8,10 @@
 const restclient = require("nordic/restclient")({
   timeout: 5000,
 });
-const normalize = require("./transforms/normalize");
+const normalizer = require("./transforms/normalizer");
 
 class ProductsService {
-  static getProducts(siteId, q, offset, limit) {
+  static getProducts(siteId, q = "celular", offset = 0, limit = 10) {
     return restclient
       .get(`/sites/${siteId}/search`, {
         params: {
@@ -20,8 +20,8 @@ class ProductsService {
           limit,
         },
       })
-      .then((response) => response.data.results)
-      .catch(() => []);
+      .then((response) => normalizer(response.data.results))
+      .catch((err) => []);
   }
 }
 

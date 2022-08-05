@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`La view de Products Ejercicio 1 1) Renderiza 1`] = `
+<DocumentFragment>
+  <img
+    alt="Mural painting"
+    class="demo-images__img lazy-loadable"
+    data-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+    decoding="async"
+    src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+  />
+  <ul>
+    <li
+      style="list-style-type: none;"
+    >
+      <h4>
+        Samsung
+      </h4>
+      <img
+        alt="Samsung"
+        class=""
+        decoding="async"
+        src="http://http2.mlstatic.com/D_838903-MLA46771080799_072021-I.jpg"
+      />
+    </li>
+  </ul>
+  <button>
+    +
+  </button>
+  <p>
+    0
+  </p>
+</DocumentFragment>
+`;

@@ -10,6 +10,7 @@ const restclient = require("nordic/restclient")({
 function View(props) {
   const { imagesPrefix, translations, i18n } = props;
   const [products, setProducts] = React.useState([]);
+  const [num, setNum] = React.useState(0);
   const preloadedState = { imagesPrefix, translations };
 
   React.useEffect(() => {
@@ -18,6 +19,10 @@ function View(props) {
       .then((result) => setProducts(result.data))
       .catch(() => []);
   }, []);
+
+  const handleOffset = () => {
+    setNum((prev) => prev + 1);
+  };
 
   return (
     <>
@@ -42,7 +47,7 @@ function View(props) {
             <li key={prod.id} style={{ listStyleType: "none" }}>
               <h4>{i18n.gettext(prod.name || prod.title)}</h4>
               <Image
-                src={prod.buy_box_winner.thumbnail}
+                src={prod.thumbnail}
                 alt={prod.name || prod.title}
                 lazyload="off"
               />
@@ -52,6 +57,8 @@ function View(props) {
       ) : (
         <h2>No se encontró el producto</h2>
       )}
+      <button onClick={handleOffset}>+</button>
+      <p>{num}</p>
     </>
   );
 }

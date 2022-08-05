@@ -12,9 +12,8 @@ router.get("/", (req, res) => {
   const { q, offset, limit } = req.query;
   const { siteId } = req.platform;
   productsService
-    .getProducts(siteId, "celular", 1, 10)
+    .getProducts(siteId, q, offset, limit)
     .then((products) => {
-      // console.log(products);
       res.status(200).json(products);
     })
     .catch((err) => res.send(err));
