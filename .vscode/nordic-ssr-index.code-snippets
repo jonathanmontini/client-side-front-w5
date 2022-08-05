@@ -1,0 +1,16 @@
+{
+	"NORDIC Create a simple Index SSR" : {
+		"scope": "javascript, typescript",
+		"prefix": "nordic-ssr-index",
+		"body": [
+			"const router = require('nordic/ragnar').router();",
+			"const { render } = require('./controller');",
+			"",
+			"router.get('/', render);",
+			"",
+			"module.exports = router;",
+			""
+		],
+		"description": "NORDIC Create a simple Index SSR"
+	} 
+}

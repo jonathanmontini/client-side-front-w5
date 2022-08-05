@@ -5,6 +5,10 @@ const serialize = require("serialize-javascript");
 function View(props) {
   const { message } = props;
 
+  const preloadedState = {
+    message,
+  };
+
   return (
     <>
       <Script>
